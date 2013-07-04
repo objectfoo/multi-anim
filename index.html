@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buster</title>
+    <style>
+        #go {
+            padding: 15px 25px;
+            font-size: 15px;
+        }
+        #idle, #walk {
+            margin: 2em auto 0;
+            width: 34px;
+            height: 54px;
+            background: url(buster.gif) no-repeat -84px -5px;
+        }
+        .idle0 { background-position: -84px -5px !important; }
+        .idle1 { background-position: -122px -5px !important; }
+        .idle2 { background-position: -160px -5px !important; }
+        .idle3 { background-position: -198px -5px !important; }
+        .idle4 { background-position: -237px -5px !important; }
+        .idle5 { background-position: -276px -5px !important; }
+
+        .wleft0 { background-position: -169px -122px !important; }
+        .wleft1 { background-position: -207px -122px !important; }
+        .wleft2 { background-position: -242px -122px !important; }
+        .wleft3 { background-position: -276px -122px !important; }
+    </style>
+</head>
+<body>
+    <button style = "display:block;margin: 2em auto;" id="go">Go</button>
+    <div id="idle" class="idle0"></div>
+    <div id="walk" class="wleft0"></div>
+<script src="app.js"></script>
+</body>
+</html>
