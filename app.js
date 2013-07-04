@@ -30,18 +30,27 @@
     SpriteSheet = (function () {
         var f = function (elementId, animationClassnames, updateInterval) {
             this.host = document.getElementById(elementId);
-            this.frames = animationClassnames || [];
+            this.frames = animationClassnames;
+
+            if (this.frames === undefined) {
+                throw new ReferenceError('SpriteSheet(): animationClassnames is undefined');
+            }
+
+            if (this.host === null) {
+                throw new ReferenceError('SpriteSheet(): element ' + elementId + ' not found');
+            }
             this.totalFrames = this.frames.length;
             this.updateInterval = updateInterval || 100;
             this.frame = 0;
             this.lastUpdate = 0;
+
         };
 
         f.prototype = {
 
             advance: function () {
-                var now = + new Date(),
-                    elapsed = -this.lastUpdate + now;
+                var now = +new Date(),
+                    elapsed = now - this.lastUpdate;
 
                 // if time elapsed since last update greater than frame updateInterval
                 if (elapsed > this.updateInterval) {
