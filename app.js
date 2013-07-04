@@ -30,7 +30,8 @@
     SpriteSheet = (function () {
         var f = function (elementId, animationClassnames, updateInterval) {
             this.host = document.getElementById(elementId);
-            this.classes = animationClassnames || [];
+            this.frames = animationClassnames || [];
+            this.totalFrames = this.frames.length;
             this.updateInterval = updateInterval || 100;
             this.frame = 0;
             this.lastUpdate = 0;
@@ -44,8 +45,8 @@
 
                 // if time elapsed since last update greater than frame updateInterval
                 if (elapsed > this.updateInterval) {
-                    this.host.className = this.classes[this.frame];
-                    this.frame = (this.frame + 1) % this.classes.length;
+                    this.host.className = this.frames[this.frame];
+                    this.frame = (this.frame + 1) % this.totalFrames;
                     this.lastUpdate = now;
                 }
             }
